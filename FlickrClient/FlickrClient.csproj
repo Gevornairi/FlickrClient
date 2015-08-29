@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{5FFB9878-3C1E-4939-A333-9D984F629E7E}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FlickrClient</RootNamespace>
+    <AssemblyName>FlickrClient</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>FlickrClient_TemporaryKey.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="project.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Constants.cs" />
+    <Compile Include="Enums\DateGranularity.cs" />
+    <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Enums\GeoAccuracy.cs" />
+    <Compile Include="Enums\GeoContext.cs" />
+    <Compile Include="Enums\MediaType.cs" />
+    <Compile Include="Enums\PhotoSearchExtras.cs" />
+    <Compile Include="Enums\PhotoSearchSortOrder.cs" />
+    <Compile Include="Enums\PlaceType.cs" />
+    <Compile Include="Enums\PopularitySort.cs" />
+    <Compile Include="Enums\SafetyLevel.cs" />
+    <Compile Include="Enums\SupportedService.cs" />
+    <Compile Include="Exceptions\ApiKeyRequiredException.cs" />
+    <Compile Include="Exceptions\AutheticationRequiredException.cs" />
+    <Compile Include="Exceptions\BadUrlFoundException.cs" />
+    <Compile Include="Exceptions\ExceptionHandler.cs" />
+    <Compile Include="Exceptions\ExceptionManager.cs" />
+    <Compile Include="Exceptions\FlickrApiException.cs" />
+    <Compile Include="Exceptions\FlickrException.cs" />
+    <Compile Include="Exceptions\FormatNotFoundException.cs" />
+    <Compile Include="Exceptions\InvalidApiKeyException.cs" />
+    <Compile Include="Exceptions\InvalidSignatureException.cs" />
+    <Compile Include="Exceptions\LoginFailedInvalidTokenException.cs" />
+    <Compile Include="Exceptions\MethodNotFoundException.cs" />
+    <Compile Include="Exceptions\MissingSignatureException.cs" />
+    <Compile Include="Exceptions\OAuthException.cs" />
+    <Compile Include="Exceptions\ParsingException.cs" />
+    <Compile Include="Exceptions\PermissionDeniedException.cs" />
+    <Compile Include="Exceptions\PhotoNotFoundException.cs" />
+    <Compile Include="Exceptions\PhotosetNotFoundException.cs" />
+    <Compile Include="Exceptions\ServiceUnavailableException.cs" />
+    <Compile Include="Exceptions\SignatureRequiredException.cs" />
+    <Compile Include="Exceptions\UserNotFoundException.cs" />
+    <Compile Include="Exceptions\UserNotLoggedInInsufficientPermissionsException.cs" />
+    <Compile Include="Factories\FlickrFactory.cs" />
+    <Compile Include="FlickrConnect\Auth.cs" />
+    <Compile Include="FlickrConnect\BoundaryBox.cs" />
+    <Compile Include="FlickrConnect\Cache.cs" />
+    <Compile Include="FlickrConnect\Context.cs" />
+    <Compile Include="FlickrConnect\Flickr.cs" />
+    <Compile Include="FlickrConnect\FlickrResponder.cs" />
+    <Compile Include="FlickrConnect\FlickrResult.cs" />
+    <Compile Include="FlickrConnect\GeoPermissions.cs" />
+    <Compile Include="FlickrConnect\IFlickrParsable.cs" />
+    <Compile Include="Enums\LicenseType.cs" />
+    <Compile Include="FlickrConnect\LockFile.cs" />
+    <Compile Include="FlickrConnect\PagedPhotoCollection.cs" />
+    <Compile Include="FlickrConnect\PartialSearchOptions.cs" />
+    <Compile Include="FlickrConnect\PersistentCache.cs" />
+    <Compile Include="FlickrConnect\Photo.cs" />
+    <Compile Include="FlickrConnect\PhotoCollection.cs" />
+    <Compile Include="FlickrConnect\PhotoInfo.cs" />
+    <Compile Include="FlickrConnect\PhotoSearchOptions.cs" />
+    <Compile Include="FlickrConnect\Photoset.cs" />
+    <Compile Include="FlickrConnect\Place.cs" />
+    <Compile Include="FlickrConnect\PlaceInfo.cs" />
+    <Compile Include="FlickrConnect\SafeNativeMethods.cs" />
+    <Compile Include="FlickrConnect\ShapeData.cs" />
+    <Compile Include="FlickrConnect\User.cs" />
+    <Compile Include="FlickrConnect\VideoInfo.cs" />
+    <Compile Include="Helpers\DelegateCommand.cs" />
+    <Compile Include="Helpers\Description.cs" />
+    <Compile Include="Helpers\HttpHelper.cs" />
+    <Compile Include="Helpers\Location.cs" />
+    <Compile Include="Helpers\NavigationService.cs" />
+    <Compile Include="Helpers\ScrollableObservableCollection.cs" />
+    <Compile Include="Models\PhotoDetailsModel.cs" />
+    <Compile Include="Repositories\FlickrRepository.cs" />
+    <Compile Include="Utilities\UtilityMethods.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\MapViewModel.cs" />
+    <Compile Include="ViewModels\PhotoInfoViewModel.cs" />
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Map.xaml.cs">
+      <DependentUpon>Map.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PhotoInfo.xaml.cs">
+      <DependentUpon>PhotoInfo.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="FlickrClient_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\mappin.png" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Views\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Map.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PhotoInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
