@@ -35,7 +35,7 @@
                         </Grid.RowDefinitions>
 
                         <Image Height="79" Width="79" Grid.Row="0" Source="{Binding SmallUrl, Mode=TwoWay}"></Image>
-                        <TextBlock Grid.Row="1" FontSize="12" Width="60" TextWrapping="NoWrap"  Text="{Binding Title, Mode=TwoWay}" />
+                        <TextBlock Grid.Row="1" FontSize="12" Width="60" TextTrimming="CharacterEllipsis"  Text="{Binding Title, Mode=TwoWay}" />
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>

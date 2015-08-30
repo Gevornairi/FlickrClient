@@ -11,12 +11,12 @@
         <Pivot Title="Big Images" ItemsSource="{Binding Photos}" ScrollViewer.IsHorizontalRailEnabled="True">
             <Pivot.HeaderTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Header}"></TextBlock>
+                    <TextBlock Text="{Binding Header}" MaxWidth="150" TextTrimming="CharacterEllipsis"></TextBlock>
                 </DataTemplate>
             </Pivot.HeaderTemplate>
             <Pivot.ItemTemplate>
                 <DataTemplate>
-                    <Image  Source="{Binding Url}" Width="250"></Image>
+                    <Image  Source="{Binding Url}" MaxWidth="300"></Image>
                 </DataTemplate>
             </Pivot.ItemTemplate>
         </Pivot>
