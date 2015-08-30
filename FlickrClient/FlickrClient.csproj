@@ -99,7 +99,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Constants.cs" />
     <Compile Include="Enums\DateGranularity.cs" />
     <Compile Include="Enums\Enums.cs" />
     <Compile Include="Enums\GeoAccuracy.cs" />
