@@ -132,8 +132,17 @@ namespace FlickrClient.ViewModels
 
         private void SearchImages(string title)
         {
-           var flicrRepository = new FlickrRepository();
-           Photos = new ScrollableObservableCollection(flicrRepository.LoadImages(CurrentPage, title).Result, title);
+            try
+            {
+
+                var flicrRepository = new FlickrRepository();
+                Photos = new ScrollableObservableCollection(flicrRepository.LoadImages(CurrentPage, title).Result, title);
+
+            }
+            catch (Exception ex)
+            {
+                exManager.PublishError(ex.Message);
+            }
         }
 
         private void SearchIconConmmandHandler(Object state)

@@ -1,4 +1,5 @@
-﻿using FlickrClient.FlickrConnect;
+﻿using FlickrClient.Exceptions;
+using FlickrClient.FlickrConnect;
 using FlickrClient.Helpers;
 using FlickrClient.Models;
 using FlickrClient.Repositories;
@@ -23,6 +24,7 @@ namespace FlickrClient.ViewModels
             MapCommand = new DelegateCommand(MapCommandHandler, null, false);
             navService = new NavigationService();
             flRepository = new FlickrRepository();
+            exManager = new ExceptionManager();
         }
 
         #endregion
@@ -33,6 +35,7 @@ namespace FlickrClient.ViewModels
         NavigationService navService = null;
         Visibility _mapCommandVisibility = Visibility.Visible;
         FlickrRepository flRepository = null;
+        ExceptionManager exManager = null;
 
         #endregion
 
@@ -142,23 +145,32 @@ namespace FlickrClient.ViewModels
 
             Photos = largePhotos;
 
-            var placeInfo = flRepository.GetGeoInfo(CurrentPhoto.PhotoId).Result;
-
-            if (placeInfo != null)
+            try
             {
-                if (placeInfo.Longitude == 0 || placeInfo.Latitude == 0)
+
+                var placeInfo = flRepository.GetGeoInfo(CurrentPhoto.PhotoId).Result;
+
+                if (placeInfo != null)
                 {
-                    MapCommandVisibility = Visibility.Collapsed;
+                    if (placeInfo.Longitude == 0 || placeInfo.Latitude == 0)
+                    {
+                        MapCommandVisibility = Visibility.Collapsed;
+                    }
+                    else
+                    {
+                        CurrentPhoto.Latitude = placeInfo.Latitude;
+                        CurrentPhoto.Longitude = placeInfo.Longitude;
+                    }
                 }
                 else
                 {
-                    CurrentPhoto.Latitude = placeInfo.Latitude;
-                    CurrentPhoto.Longitude = placeInfo.Longitude;
+                    MapCommandVisibility = Visibility.Collapsed;
                 }
+
             }
-            else
+            catch (Exception ex)
             {
-                MapCommandVisibility = Visibility.Collapsed;
+                exManager.PublishError(ex.Message);
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using FlickrClient.FlickrConnect;
+﻿using FlickrClient.Exceptions;
+using FlickrClient.FlickrConnect;
 using FlickrClient.Repositories;
 using System;
 using System.Collections.Generic;
@@ -20,11 +21,13 @@ namespace FlickrClient.Helpers
         {
             HasMoreItems = true;
             this.title = title;
+            exManager = new ExceptionManager();
         }
         public bool HasMoreItems { get; set; }
         private bool isRunning = false;
         private int currentPage = 0;
         private string title;
+        ExceptionManager exManager = null;
 
         public Windows.Foundation.IAsyncOperation<LoadMoreItemsResult> LoadMoreItemsAsync(uint count)
         {
@@ -60,9 +63,10 @@ namespace FlickrClient.Helpers
 
                    isRunning = false;
                }
-               catch
+               catch(Exception ex)
                {
                    HasMoreItems = false;
+                   exManager.PublishError(ex.Message);
                }
 
                LoadMoreItemsResult res = new LoadMoreItemsResult() { Count = (uint)itemsCount };
